@@ -88,6 +88,12 @@ namespace KyberSpace {
         return InnFE(e).inv()*f;
     }
 
+    std::ostream& operator<<(std::ostream &out, const InnFE &c)
+    {
+        out << c.f;
+        return out;
+    }
+
 
 
 
@@ -156,6 +162,15 @@ namespace KyberSpace {
             }
         }
         return res;
+    }
+
+    inline std::ostream& operator<<(std::ostream &out, const PolyRing &c)
+    {
+        for(ssize_t i=NN-1; i >= 0; i--) {
+            out << c.r[i] << "x^" << i;
+            if(i != 0) out << "+";
+        }
+        return out;
     }
 
 }

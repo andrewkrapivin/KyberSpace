@@ -1,5 +1,5 @@
 #include "Sample.h"
-#include "Sam.h"
+#include "HashFunctionWrappers.h"
 #include "Configuration.h"
 #include <iostream>
 #include <cstdint>

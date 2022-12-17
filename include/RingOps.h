@@ -32,11 +32,13 @@ namespace KyberSpace {
 
     InnFE powFE(InnFE x, size_t p);
 
-    inline std::ostream& operator<<(std::ostream &out, const InnFE &c)
-    {
-        out << c.f;
-        return out;
-    }
+    std::ostream& operator<<(std::ostream &out, const InnFE &c);
+
+    // inline std::ostream& operator<<(std::ostream &out, const InnFE &c)
+    // {
+    //     out << c.f;
+    //     return out;
+    // }
 
     //Encodes Z_q[X] / (X^NN + 1)
     struct alignas(64) PolyRing {
@@ -54,14 +56,16 @@ namespace KyberSpace {
         PolyRing operator * (const InnFE& e);
     };
 
-    inline std::ostream& operator<<(std::ostream &out, const PolyRing &c)
-    {
-        for(ssize_t i=NN-1; i >= 0; i--) {
-            out << c.r[i] << "x^" << i;
-            if(i != 0) out << "+";
-        }
-        return out;
-    }
+    std::ostream& operator<<(std::ostream &out, const PolyRing &c);
+
+    // inline std::ostream& operator<<(std::ostream &out, const PolyRing &c)
+    // {
+    //     for(ssize_t i=NN-1; i >= 0; i--) {
+    //         out << c.r[i] << "x^" << i;
+    //         if(i != 0) out << "+";
+    //     }
+    //     return out;
+    // }
 }
 
 #endif
