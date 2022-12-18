@@ -14,6 +14,7 @@
 #include "Sample.h"
 #include "Kyber.h"
 #include "RandomBytes.h"
+#include "HelperFuncs.h"
 #include <utility>
 
 // class KyberCPAEncryptor {
@@ -91,4 +92,15 @@ int main() {
     }
     std::cout << std::endl;
 
+
+
+
+
+    KEMKeyPair kemkp = KEMKeyGen();
+    KEMMessage kemm = Encapsulate(kemkp.pk);
+    printKStringAsHex(kemm.K);
+    std::string Kp = Decapsulate(kemkp, kemm.c);
+    printKStringAsHex(Kp);  
+
+    // cout << endl<< endl << kemkp.pk.t << kemkp.pk.rho << endl << endl;
 }

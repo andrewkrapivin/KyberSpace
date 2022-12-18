@@ -28,6 +28,8 @@ namespace KyberSpace {
         InnFE operator / (const InnFE& e);
         InnFE operator / (const uint16_t& e);
 
+        bool operator == (const InnFE &)const;
+        bool operator == (const uint16_t &)const;
     };
 
     InnFE powFE(InnFE x, size_t p);
@@ -54,6 +56,8 @@ namespace KyberSpace {
         PolyRing operator - (const PolyRing& e);
         PolyRing operator * (const PolyRing& e);
         PolyRing operator * (const InnFE& e);
+        
+        bool operator == (const PolyRing &)const;
     };
 
     std::ostream& operator<<(std::ostream &out, const PolyRing &c);

@@ -88,6 +88,15 @@ namespace KyberSpace {
         return InnFE(e).inv()*f;
     }
 
+    bool InnFE::operator == (const InnFE & e)const {
+        return f == e.f;
+    }
+
+    bool InnFE::operator == (const uint16_t & e)const {
+        return f == (e % QQ);
+    }
+
+
     std::ostream& operator<<(std::ostream &out, const InnFE &c)
     {
         out << c.f;
@@ -164,7 +173,12 @@ namespace KyberSpace {
         return res;
     }
 
-    inline std::ostream& operator<<(std::ostream &out, const PolyRing &c)
+    bool PolyRing::operator == (const PolyRing & e)const {
+        return r == e.r;
+    }
+
+
+    std::ostream& operator<<(std::ostream &out, const PolyRing &c)
     {
         for(ssize_t i=NN-1; i >= 0; i--) {
             out << c.r[i] << "x^" << i;

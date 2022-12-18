@@ -9,6 +9,8 @@ namespace KyberSpace {
     //Todo: since this current system does a bad job of differentiating between matrix & vector, maybe do some templating?
     //So the templating is kinda just to force stuff to use RingVector & RingMatrix
 
+    //Also, there's a lot of adhoc naming. Maybe its a little too much?
+
     //For now this terrible typedef. Really terrible lol. BUt after all a vector is a matrix, just an n x 1 matrix, so whatever.
     //Thus it really serves just as a bit of a like "oh let's remind ourselves of this"
     typedef RingMatrix RingVector;
@@ -45,7 +47,34 @@ namespace KyberSpace {
 
     KeyPair KeyGen();
     EncryptedMessage Encrypt(PublicKey pk, Message m, std::string r);
+    EncryptedMessage Encrypt(PublicKey pk, std::string mstr, std::string r);
     Message Decrypt(SecretKey sk, EncryptedMessage c);
+
+    struct KEMMessage {
+        EncryptedMessage c;
+        std::string K;
+
+        KEMMessage(EncryptedMessage c, std::string K): c(c), K(K){}
+    };
+
+    struct KEMSecretKey {
+        SecretKey s;
+        std::string z;
+
+        KEMSecretKey(SecretKey s, std::string z) : s(s), z(z) {}
+    };
+
+    struct KEMKeyPair {
+        PublicKey pk;
+        KEMSecretKey sk;
+
+        KEMKeyPair(PublicKey pk, KEMSecretKey sk) : pk(pk), sk(sk) {}
+    };
+
+    
+    KEMKeyPair KEMKeyGen();
+    KEMMessage Encapsulate(PublicKey pk);
+    std::string Decapsulate(KEMKeyPair kemkp, EncryptedMessage c);
 
 }
 
