@@ -9,7 +9,7 @@ Requires the Crypto++ library. On ubuntu:
 apt install libcrypto++-dev
 
 Future plans are:
-1. Update this to reflect the newest Kyber version. Currently I used the older version that does not employ rounding and is based on the following paper: https://eprint.iacr.org/2017/634.pdf
+1. Update this to reflect the newest Kyber version (including understanding fully what the differences are. As far as I currently understand the differences relate to the choice of parameters and the corresponding change in the NTT implementation, as well as improved security analysis). Currently I used the older version that is based on the following paper: https://eprint.iacr.org/2017/634.pdf
 2. Output binary versions of the public key, encrypted messages, and so on, so they can be stored in files. Additionally, this binary version should be storing the compressed versions to be as space efficient as the real implementation.
 3. Implement a montgomery reduction for modular multiplication
 4. Implement NTT for faster polynomial multiplication
