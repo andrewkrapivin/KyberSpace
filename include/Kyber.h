@@ -45,6 +45,8 @@ namespace KyberSpace {
         KeyPair(PublicKey pk, SecretKey sk): pk(pk), sk(sk) {}
     };
 
+    std::string mPolyRingToStr(Message m);
+
     KeyPair KeyGen();
     EncryptedMessage Encrypt(PublicKey pk, Message m, std::string r);
     EncryptedMessage Encrypt(PublicKey pk, std::string mstr, std::string r);

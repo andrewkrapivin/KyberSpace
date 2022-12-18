@@ -64,33 +64,20 @@ int main() {
     // RingMatrix mudecomp = mucomp.decompress(7);
     // std::cout << mudecomp << std::endl;
 
-    Message m(1, 1);
-    m.mat[0].r[0] = 1;
-    m.mat[0].r[1] = 1;
-    m.mat[0].r[2] = 0;
-    m.mat[0].r[3] = 0;
-    m.mat[0].r[4] = 0;
-    m.mat[0].r[5] = 1;
-    m.mat[0].r[6] = 1;
-    m.mat[0].r[7] = 0;
-    m.mat[0].r[8] = 1;
-    m.mat[0].r[9] = 0;
-    m.mat[0].r[10] = 1;
-    m.mat[0].r[11] = 1;
+    
 
-    for(size_t i{0}; i < 40; i++) {
-        std::cout << m.mat[0].r[i];
-    }
-    std::cout << std::endl;
+    string message = "Do or do not. There is no try.";
+    message.resize(RandomStringBytes);
+    cout << "Message to encrypt: " << endl;
+    cout << message << endl << endl;
 
     KeyPair g = KeyGen();
-    EncryptedMessage c = Encrypt(g.pk, m, GetTrueRandomBytes(RandomStringBytes));
+    EncryptedMessage c = Encrypt(g.pk, message, GetTrueRandomBytes(RandomStringBytes));
     Message dm = Decrypt(g.sk, c);
 
-    for(size_t i{0}; i < 40; i++) {
-        std::cout << dm.mat[0].r[i];
-    }
-    std::cout << std::endl;
+    string decryptedMessage = mPolyRingToStr(dm);
+    cout << "Decrypted message: " << endl;
+    cout << decryptedMessage << endl << endl;
 
 
 
