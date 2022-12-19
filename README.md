@@ -14,4 +14,4 @@ Future plans are:
 3. Implement a montgomery reduction for modular multiplication
 4. Implement NTT for faster polynomial multiplication
 5. Accelerate (some of?) the operations with AVX512?
-6. Figure out how SHA & SHAKE work to implement that in tune with Kyber? They are supposedly SIMDable (although maybe with AVX512 that changed?), but can use SIMD to run several hashes at once, so that might be interesting.
+6. Figure out how SHA & SHAKE work to implement that in tune with Kyber? They supposedly cannot natively make use of SIMD instructions for a speedup, but can use SIMD to run several hashes at once, so that may be an interesting avenue to explore.
